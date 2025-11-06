@@ -1,6 +1,8 @@
 ---
 import { ClientRouter } from "astro:transitions"
 import '../styles/index.scss';
+
+import { Icon } from 'astro-icon/components'
 import Logo from '../components/Logo.astro'
 
 const { pageTitle } = Astro.props;
@@ -22,14 +24,21 @@ const { pageTitle } = Astro.props;
       </a>
       <div class="icon-container">
         <a class="icon-link" aria-label="About" href="/about">
-          <font-awesome :icon="['fas', 'info']"/>
+          <Icon name="fa7-solid:info" />
         </a>
         <a class="icon-link" aria-label="RSS" href="/rss.xml">
-          <font-awesome :icon="['fas', 'rss']"/>
+          <Icon name="fa7-solid:rss" />
         </a>
       </div>
     </div>
     <slot />
+    <section>
+      <footer>
+        <div class="has-text-centered is-size-7">
+          Copyright © 2020-2025 <a href="https://hildemorin.com">Hilde Morin</a>
+        </div>
+      </footer>
+    </section>
   </body>
 </html>
 

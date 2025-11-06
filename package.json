@@ -9,8 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@iconify-json/fa7-solid": "^1.2.2",
     "@splidejs/splide": "^4.1.4",
     "astro": "^5.15.3",
+    "astro-icon": "^1.1.5",
     "astro-splide": "^2.0.1",
     "bulma": "^1.0.4",
     "sass": "^1.93.3"
