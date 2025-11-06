@@ -1,0 +1,66 @@
+---
+// @ts-nocheck
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import { getCollection, getEntry } from 'astro:content'
+import { Image } from 'astro:assets'
+import path from 'path'
+
+const pageTitle = "Photoblog - Hilde's Photoblog";
+
+const allPosts = await getCollection('posts')
+allPosts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
+
+console.log(allPosts)
+
+---
+<BaseLayout pageTitle={pageTitle}>
+	<div class="content">
+		<h1>Astro</h1>
+		<ul>
+			{allPosts.map(post => <li>{post.data.title}</li>)}
+		</ul>
+		<a href="https://example.com">TEST LINK</a>
+	</div>
+	<div class="section">
+		<div class="container">
+			<div class="columns is-multiline is-centered">
+				{allPosts.map(post => 
+					<div class="column is-one-third">
+						<a href={'/posts/'+ post.id}>
+							<figure>
+								<div class="image is-square">
+									<Image src={post.data.thumbnail} alt={post.data.title} width="400" height="400" />
+								</div>
+								<figcaption class="has-text-centered">
+									{post.data.title}
+									<br>
+									<small>{new Date(post.data.date).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</small>
+								</figcaption>
+							</figure>
+						</a>
+					</div>
+				)}
+			</div>
+		</div>
+	</div>
+</BaseLayout>
+
+<style lang="scss" scoped>
+  .image img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+  }
+
+  .image:hover img {
+    -webkit-transform: scale(1.05);
+  	transform: scale(1.05);
+  }
+
+  .image {
+    overflow: hidden;
+  }
+
+</style>

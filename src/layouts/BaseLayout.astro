@@ -1,0 +1,56 @@
+---
+import '../styles/index.scss';
+import Logo from '../components/Logo.astro'
+
+const { pageTitle } = Astro.props;
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <div class="top">
+      <a href="/">
+         <Logo />
+        <div class="logo-text has-text-centered" style="font-family: 'Syncopate'; font-weight: 600;">PHOTOBLOG</div>
+      </a>
+      <div class="icon-container">
+        <a class="icon-link" aria-label="About" href="/about">
+          <font-awesome :icon="['fas', 'info']"/>
+        </a>
+        <a class="icon-link" aria-label="RSS" href="/rss.xml">
+          <font-awesome :icon="['fas', 'rss']"/>
+        </a>
+      </div>
+    </div>
+    <slot />
+  </body>
+</html>
+
+<style lang="scss" scoped>
+  .top {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .icon-container {
+    position: absolute;
+    top: 20px;
+    right: 0px;
+  }
+
+  .icon-link {
+    padding: 5px;
+  }
+
+  .logo-text:hover {
+    color: gray !important;
+  }
+
+</style>
