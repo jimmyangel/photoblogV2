@@ -11,17 +11,8 @@ const pageTitle = "Photoblog - Hilde's Photoblog";
 const allPosts = await getCollection('posts')
 allPosts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
 
-console.log(allPosts)
-
 ---
 <BaseLayout pageTitle={pageTitle}>
-	<div class="content">
-		<h1>Astro</h1>
-		<ul>
-			{allPosts.map(post => <li>{post.data.title}</li>)}
-		</ul>
-		<a href="https://example.com">TEST LINK</a>
-	</div>
 	<div class="section">
 		<div class="container">
 			<div class="columns is-multiline is-centered">

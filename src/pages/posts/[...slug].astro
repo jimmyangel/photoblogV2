@@ -1,6 +1,12 @@
 ---
+import "@splidejs/splide/css"
+import { Splide, SplideSlide } from 'astro-splide'
+
 import { getCollection, render } from 'astro:content'
-import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import { Picture } from 'astro:assets'
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts')
@@ -11,9 +17,35 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props
 const { Content } = await render(post)
+
+
+console.log(post)
 ---
 
 <BaseLayout>
-   <p>{post.data.title}</p>
+  <div>
+      <Splide
+        class='not-content'
+        options={ {  // check for options at https://splidejs.com/guides/options/
+          type: 'loop', 
+          autoplay: false
+        } }
+      >
+
+    {post.data.photos.map(photo => 
+      <SplideSlide>
+        <figure>
+          <div class="image">
+            <Picture src={photo.photourl} alt={photo.photocaption} width="1200" />
+          </div>
+          <figcaption class="has-text-centered">
+            {photo.photocaption}
+            <br><br>
+          </figcaption>
+        </figure>
+      </SplideSlide>
+    )}
+  </div>
   <Content />
 </BaseLayout>
+
