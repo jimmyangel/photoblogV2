@@ -18,15 +18,18 @@ export async function getStaticPaths() {
 const { post } = Astro.props
 const { Content } = await render(post)
 
+console.log(post.data.photos.length)
+
 ---
 
 <BaseLayout>
   <div>
       <Splide
         class='not-content'
-        options={ {  // check for options at https://splidejs.com/guides/options/
+        options={ { 
           type: 'loop', 
-          autoplay: false
+          autoplay: false,
+          arrows: post.data.photos.length > 1
         } }
       >
 
