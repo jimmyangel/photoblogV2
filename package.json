@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.13",
     "@iconify-json/fa7-solid": "^1.2.2",
     "@splidejs/splide": "^4.1.4",
     "astro": "^5.15.3",
