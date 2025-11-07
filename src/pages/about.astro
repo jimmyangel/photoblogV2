@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import {frontmatter, Content} from '../content/about/about.md'
+import bannerImage from '../content/about/banner.jpg'
+
+//console.log(about)
+
+const pageTitle = "Photoblog - Hilde's Photoblog - About"
+---
+
+<style>
+  .banner {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .banner {
+      height: 150px;
+    }
+  }
+
+</style>
+
+<BaseLayout pageTitle={pageTitle}>
+    <br>
+    <Image class="banner" src={bannerImage} alt=""/>
+    <div class="section">
+        <div class="content"><h1>{frontmatter.title}</h1></div>
+        <Content />
+    </div>
+</BaseLayout>
+
+
