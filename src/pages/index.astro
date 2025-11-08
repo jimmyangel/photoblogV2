@@ -6,6 +6,7 @@ import { getCollection, getEntry } from 'astro:content'
 import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon/components'
 import path from 'path'
+import SearchModal from '../components/SearchModal.astro';
 
 const pageTitle = "Photoblog - Hilde's Photoblog";
 
@@ -13,13 +14,16 @@ const allPosts = await getCollection('posts')
 allPosts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
 
 ---
+<SearchModal allPosts = {allPosts} />
 <BaseLayout pageTitle={pageTitle}>
 	<div class="section">
 		<div class="container">
 			<div style="width: 220px;" class="columns is-mobile search-icon">
-				<a class="column is-narrow" href="" aria-label="Search" @click="openSearchModal()">
+				<!--  <a class="column is-narrow" href="" aria-label="Search" @click="openSearchModal()"> -->
+				<button class="js-modal-trigger" data-target="search-modal">
 					<Icon name="fa7-solid:search" />
-				</a>
+				</button>
+				<!-- </a> -->
 			</div>
 			<div class="columns is-multiline is-centered">
 				{allPosts.map(post => 
