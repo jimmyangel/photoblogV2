@@ -22,7 +22,7 @@ const { Content } = await render(post)
 
 <BaseLayout>
   <div class="section container">
-      <div class="has-text-centered container">
+      <div class="has-text-centered">
         {post.data.title}<br>
         <small>{new Date(post.data.date).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</small>
       </div>
@@ -53,7 +53,7 @@ const { Content } = await render(post)
     )}
   </div>
 
-  <div class="container">
+  <div class="section container">
     <Content />
   </div>
 
