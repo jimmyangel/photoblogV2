@@ -31,7 +31,7 @@ allPosts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
 						<a href={'/posts/'+ post.id}>
 							<figure>
 								<div class="image is-square">
-									<Image src={post.data.thumbnail} alt={post.data.title} width="400" height="400" />
+									<Image src={post.data.thumbnail} alt={post.data.title} layout='constrained' width={800} />
 								</div>
 								<figcaption class="has-text-centered">
 									{post.data.title}
