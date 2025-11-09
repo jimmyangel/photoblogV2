@@ -24,7 +24,7 @@ const { allPosts } = Astro.props
                 <br>
                 <div class="panel">
                     {allPosts.map(post =>  
-                        <a class="panel-block" href="">{new Date(post.data.date).toDateString()} - {post.data.title}</a>
+                        <a class="panel-block" href={'/posts/'+ post.id}>{new Date(post.data.date).toDateString()} - {post.data.title}</a>
                     )}
                 </div>
             </section>
@@ -65,6 +65,8 @@ const { allPosts } = Astro.props
     //@ts-nocheck
     import {getPureText} from '../scripts/misc'
 
+
+    // Code from Bulma site to implement js modal features
     document.addEventListener('DOMContentLoaded', () => {
         // Functions to open and close a modal
         function openModal($el) {
