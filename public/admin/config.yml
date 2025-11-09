@@ -1,0 +1,44 @@
+backend:
+  name: git-gateway
+  branch: master
+  squash_merges: true
+
+publish_mode: editorial_workflow
+show_preview_links: false
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://photoblog.hildemorin.com
+
+collections:
+  - name: "about"
+    label: "About"
+    folder: "src/content/about"
+    path: "about"
+    create: false
+    delete: false
+    media_folder: "./"
+    fields:
+      - {label: "Id", name: "id", widget: "hidden", required: true}
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Banner image", hint: "Wide and 300px height", name: "banner", widget: "image" , allow_multiple: false, required: true}
+      - {label: "About", name: "body", widget: "markdown"}
+  - name: "post"
+    label: "Post"
+    editor:
+       preview: false
+    folder: "src/content/posts"
+    path: "{{year}}-{{month}}-{{day}}-{{slug}}/post"
+    create: true
+    delete: true
+    media_folder: "./"
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Thumbnail", hint: "Use a square image", name: "thumbnail", widget: "image" , allow_multiple: false, required: true}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Photos", name: "photos", widget: "list", fields: [
+          {label: "Caption", name: "photocaption", widget: "string", required: true},
+          {label: "Photo", name: "photourl", widget: "image" , allow_multiple: false, required: true}]}
+      - {label: "Post entry", name: "body", widget: "markdown", required: false}
