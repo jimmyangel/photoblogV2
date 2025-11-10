@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets'
+import image404 from '../images/404.jpg'
+
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout>
+    <section class="section">
+    <div class="content has-text-centered">
+        <h3>Ooops!</h3>
+        <h3>I cannot find what you are looking for (404)...</h3>
+        <br>
+        <a href="/">
+            <Image src={image404} alt="404" />
+        </a>
+    </div>
+    </section>
+</BaseLayout>
