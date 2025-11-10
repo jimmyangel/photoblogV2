@@ -21,7 +21,7 @@ const { Content } = await render(post)
 ---
 
 <BaseLayout>
-  <div class="section container">
+  <div class="section container is-max-desktop">
       <div class="has-text-centered">
         {post.data.title}<br>
         <small>{new Date(post.data.date).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</small>
@@ -53,7 +53,7 @@ const { Content } = await render(post)
     )}
   </div>
 
-  <div class="section container">
+  <div class="section container is-max-desktop">
     <Content />
   </div>
 
@@ -66,6 +66,7 @@ const { Content } = await render(post)
   }
 
   .section {
+    padding-top: 1rem;
     padding-bottom: 0.5rem;
   }
 </style>
